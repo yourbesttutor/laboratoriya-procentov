@@ -148,8 +148,9 @@ input[type=range]::-moz-range-thumb{width:20px;height:20px;border-radius:50%;bac
 .task .dots{margin-left:auto}
 .badge{font-family:var(--f-display);font-weight:700;font-size:.8rem;letter-spacing:.14em;text-transform:uppercase;background:#12062c;color:var(--c);padding:6px 12px;border-radius:999px}
 .task .eyebrow{color:#12062c;font-weight:700}
-.task .task-text{font-size:clamp(1.2rem,3.6vw,1.6rem);line-height:1.4;font-weight:600;max-width:60ch}
-.task .task-text b{background:#12062c;color:var(--c);padding:0 .35em;border-radius:8px;font-family:var(--f-mono);white-space:nowrap}
+.task .task-text{font-size:clamp(1.2rem,3.6vw,1.6rem);line-height:1.5;font-weight:600;max-width:60ch}
+.task .task-text b{display:inline-block;vertical-align:baseline;line-height:1.15;background:#12062c;color:var(--c);padding:.06em .45em;border-radius:10px;font-family:var(--f-mono);white-space:nowrap}
+.task .task-text b:has(.fr){vertical-align:middle;padding:.18em .45em;margin-block:.12em}
 .task .task-go{font-size:.9rem;font-weight:700;opacity:.8}
 .task .dots i{border-color:rgba(18,6,44,.55)}
 .task .dots i.on{background:#12062c;border-color:#12062c;box-shadow:none}
@@ -159,7 +160,10 @@ input[type=range]::-moz-range-thumb{width:20px;height:20px;border-radius:50%;bac
 .fr .n{border-bottom:.09em solid currentColor;padding:0 .25em .04em}
 .fr .d{padding:.04em .25em 0}
 
-.rungs{display:flex;flex-wrap:wrap;gap:6px}
+.rungs{display:flex;align-items:flex-start;gap:12px;flex-wrap:wrap}
+.lvl-bars{display:flex;gap:4px;margin-top:.5em}.lvl-bars i{width:22px;height:8px;border-radius:4px;background:rgba(18,6,44,.22)}.lvl-bars i.on{background:#12062c}
+.lvl-txt{font-size:.88rem;line-height:1.4;color:rgba(18,6,44,.85);max-width:60ch}.lvl-txt b{font-weight:800}
+.lvl-why{display:block;margin-top:6px;font-size:.8rem;opacity:.85;border-left:3px solid rgba(18,6,44,.35);padding-left:8px}
 .rg{font:700 .78rem var(--f-body);padding:4px 10px;border-radius:999px;border:2px solid rgba(18,6,44,.35);color:rgba(18,6,44,.75)}
 .rg.on{background:#12062c;color:var(--c);border-color:#12062c}
 .task{transition:background .5s}
@@ -196,24 +200,31 @@ input[type=range]::-moz-range-thumb{width:20px;height:20px;border-radius:50%;bac
 .hero-demo{display:flex;flex-direction:column;align-items:center;gap:10px}
 .hero-demo .flask svg{cursor:ns-resize;touch-action:pan-y}
 .demo-hint{color:var(--muted);font-size:.88rem;text-align:center;max-width:30ch}
-.demo-hint .ht{display:none}
-@media (hover:none){.demo-hint .hm{display:none}.demo-hint .ht{display:inline}}
+@media (hover:none),(pointer:coarse){.demo-hint{display:none}}
 .group{margin-top:34px;display:flex;flex-direction:column;gap:12px}
 .group h3{font-size:1rem;color:var(--fg)}
 .group h3 small{display:block;font-family:var(--f-body);font-weight:400;color:var(--muted);font-size:.88rem;margin-top:4px}
 .rm-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:12px}
 .rm{display:flex;flex-direction:column;gap:6px;padding:14px;border:1px solid var(--line);border-radius:16px;text-decoration:none;color:var(--fg);background:var(--bg2);transition:border-color .2s,box-shadow .2s,transform .15s;min-width:0}
 .rm:hover{border-color:var(--c);box-shadow:0 0 22px -6px var(--c);transform:translateY(-2px)}
-.rm .n{font-family:var(--f-mono);color:var(--c);font-weight:700}
+.rm .n{font-family:var(--f-body);font-size:.86rem;color:var(--c);font-weight:500}
 .rm .nm{font-family:var(--f-display);font-size:.95rem;line-height:1.2}
 .rm .sh{color:var(--muted);font-size:.86rem}
 .rm .pr{font-family:var(--f-mono);font-size:.78rem;color:var(--muted);margin-top:auto}
 .rm.done .pr{color:var(--good)}
-.how{margin-top:34px;display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px}
-.how div{padding:14px;border-radius:14px;border:1px dashed var(--line);display:flex;flex-direction:column;gap:4px}
-.how b{font-family:var(--f-mono);color:var(--cyan);font-size:.8rem;letter-spacing:.1em;text-transform:uppercase}
-.src{margin-top:30px;color:var(--muted);font-size:.85rem}
-.src a{color:var(--cyan)}
+.how{margin-top:30px}
+
+.how h3{font-size:clamp(1.4rem,3.4vw,2rem);margin-bottom:6px}
+.how-lead{color:var(--muted);max-width:68ch;margin-bottom:14px}
+.how-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px}
+.how-grid div{position:relative;padding:16px 16px 16px 58px;border-radius:14px;border:1px solid var(--line);background:var(--bg2);display:flex;flex-direction:column;gap:4px;line-height:1.5}
+.how-grid i{position:absolute;left:14px;top:14px;width:32px;height:32px;border-radius:50%;display:grid;place-items:center;font:700 1rem var(--f-mono);font-style:normal;background:var(--c);color:#12062c}
+.how-grid b{font-family:var(--f-display);font-size:1rem;color:var(--fg)}
+.chain .chain-row{display:contents}
+.chain-wait{width:100%;text-align:center;color:var(--muted);font-size:.85rem}
+.chain .chain-row[hidden]{display:none}
+.chain .chain-row[hidden]+.memo{margin-top:0;padding-top:0;border-top:0}
+.chain .memo{width:100%;margin-top:6px;padding-top:10px;border-top:1px dashed var(--line);text-align:center}
 
 .foot{margin-top:56px;padding-block:18px 8px;text-align:center;font-size:.8rem;line-height:1.7;color:var(--muted);text-wrap:balance}
 .foot a{color:inherit;text-decoration:underline;text-underline-offset:3px}
@@ -239,6 +250,31 @@ input[type=range]::-moz-range-thumb{width:20px;height:20px;border-radius:50%;bac
   .ba{grid-template-columns:1fr}
 }
 @media (prefers-reduced-motion:reduce){*{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}}
+/* drag */
+.dragsrc{cursor:grab}
+body.dragging,body.dragging *{cursor:grabbing!important;user-select:none;-webkit-user-select:none}
+.lifted{opacity:.35}
+.flask.drop{filter:drop-shadow(0 0 22px var(--c))}
+.flask.drop .glass{stroke:#fff}
+.ghost{position:fixed!important;left:0;top:0;margin:0!important;pointer-events:none;z-index:80;opacity:.96;filter:drop-shadow(0 12px 18px rgba(0,0,0,.55));transition:none}
+.ghost.pouring{transition:none}
+.ghost.emptying .liq{transform:scaleY(0)!important;transition:transform .55s!important}
+.ghost.tube{background:none}
+.stream{position:fixed;z-index:79;width:5px;border-radius:3px;pointer-events:none;box-shadow:0 0 10px rgba(255,255,255,.5)}
+.tools{display:flex;flex-direction:column;align-items:center;justify-content:flex-end;gap:4px;flex:0 0 96px}
+.tool{display:flex;flex-direction:column;align-items:center;gap:2px;padding:8px 6px;border:1px dashed var(--line);border-radius:14px;background:var(--bg2);color:var(--fg);font:inherit;cursor:grab;width:92px}
+.tool svg{width:56px;height:auto;display:block;overflow:visible}
+.tool .tg{fill:rgba(255,255,255,.06);stroke:var(--cyan);stroke-width:3;stroke-linejoin:round;stroke-linecap:round}
+.tool .wisp{fill:none;stroke:#dff6ff;stroke-width:3;stroke-linecap:round;animation:wisp 2.2s ease-in-out infinite}
+.tool .wisp.w2{animation-delay:-.7s}.tool .wisp.w3{animation-delay:-1.4s}
+@keyframes wisp{0%,100%{transform:translateY(2px);opacity:.55}50%{transform:translateY(-4px);opacity:1}}
+.tool .tl{font:700 .82rem var(--f-body)}
+.tool .th{font-size:.68rem;color:var(--muted);text-align:center;line-height:1.2}
+.tool:hover{border-color:var(--cyan)}
+/* единая «машинка» для подсказок и служебных подписей */
+.task .task-go,.lvl-txt,.lvl-why,.chain-cap,.chain-wait,.read .k,.cn .k,.ctl-label,.tool .tl,.tool .th,.dlg .expl,.demo-hint,.rg,.fl-title,.btn.step{font-family:var(--f-mono)}
+.task .task-go{font-size:.84rem}.lvl-txt{font-size:.82rem}.lvl-why{font-size:.76rem}.dlg .expl{font-size:.9rem}
+.fl-title{font-weight:500}
 </style>
 
 <div class="app">
@@ -280,9 +316,9 @@ function g1(level){
   else{const e=pick([20,40,30,10,60,25]);target=100-e;
     text=`Налей столько, чтобы пустыми остались ровно <b>${e}%</b> колбы.`;
     expl=`Вся колба — 100%. Пустые ${e}%, значит налито 100 − ${e} = ${target}%.`}
-  return{text,kind:'slider',slider:{min:0,max:100,step:1,big:10,init:0,unit:'%',label:'Сколько налить'},answer:target,
+  return{text,kind:'slider',slider:{min:0,max:100,step:1,big:10,init:0,unit:'%',label:'Сколько налить'},drag:{tool:'bottle',color:BLUE,label:'Реагент',to:0,hint:'реагент на колбу и держи'},answer:target,
     view(v){return{flasks:[{title:'Колба',layers:[{f:v/100,color:BLUE}],ticks:tk(10,x=>Math.round(x*100)+'%'),marks:[{f:1,t:'100%'}],caption:`налито <b>${fmt(v)}%</b>`}],
-      chain:{n:v,d:100,part:fmt(v)+' из 100 делений'},reads:[{k:'Налито',v:fmt(v)+'%',hot:true},{k:'В долях',v:fmt(v/100)},{k:'Осталось пустым',v:fmt(100-v)+'%'}]}},
+      chain:{n:v,d:100,part:fmt(v)+' из 100 делений'},reads:[{k:'Налито',v:fmt(v)+'%',hot:true},{k:'Осталось пустым',v:fmt(100-v)+'%'}]}},
     wrong:v=>`Налито ${fmt(v)}%, а нужно ${fmt(target)}%.`,
     hint:'1% — это одна сотая колбы. Вся колба — это 100%.',explain:expl,
     memo:'<b>p% = p/100</b>, вся колба = 100%'};
@@ -292,7 +328,7 @@ function g2(level){
   for(;;){V=pick([200,250,400,500,600,800,1000]);p=pick(level<2?[10,20,25,50]:[5,15,30,40,60,75,80]);ml=V*p/100;if(isInt(ml))break}
   const big=V>=500?50:10;
   return{text:`В колбе <b>${V} мл</b> реагента — это 100%. Отлей в пробирку <b>${p}%</b> от этого объёма.`,
-    kind:'slider',slider:{min:0,max:V,step:1,big,init:0,unit:'мл',label:'Сколько мл отлить'},answer:ml,
+    kind:'slider',slider:{min:0,max:V,step:1,big,init:0,unit:'мл',label:'Сколько мл отлить'},drag:{from:0,to:1,hint:'колбу на пробирку и держи'},answer:ml,
     view(x){const tks=tk(10,f=>fmt(V*f));return{flasks:[
       {title:'Колба',layers:[{f:(V-x)/V,color:BLUE}],ticks:tks,marks:[{f:1,t:'100%'}],caption:`осталось ${fmt(V-x)} мл`},
       {title:'Пробирка',layers:[{f:x/V,color:PINK}],ticks:tks,marks:[{f:1,t:'100%'}],caption:`отлито <b>${fmt(x)} мл</b>`}],
@@ -325,7 +361,7 @@ function g4(level){
   let T,p,d;for(;;){T=pick([100,150,200,250,300,400,500,600,800]);p=pick(level<2?[50,25,20,10]:[40,60,75,80,30,15]);d=T*p/100;if(isInt(d)&&d>=10)break}
   const mx=Math.round(T*1.7);const big=mx>=600?50:10;
   return{text:`<b>${d} мл</b> красного реагента — это <b>${p}%</b> всей смеси. Доливай синий реагент, пока красный не станет ровно ${p}% смеси. Сколько мл смеси получится?`,
-    kind:'slider',slider:{min:d,max:mx,step:1,big,init:d,unit:'мл',label:'Всего смеси'},answer:T,
+    kind:'slider',slider:{min:d,max:mx,step:1,big,init:d,unit:'мл',label:'Всего смеси'},drag:{tool:'bottle',color:BLUE,label:'Синий реагент',to:0,hint:'синий реагент на колбу и держи'},answer:T,
     view(t){return{flasks:[{title:'Смесь',layers:[{f:d/mx,color:PINK},{f:(t-d)/mx,color:BLUE}],ticks:tk(10,f=>fmt(mx*f)),
       marks:[{f:t/mx,t:'100%'}],caption:`красный ${d} мл, всего <b>${fmt(t)} мл</b>`}],
       chain:{n:d,d:t,part:`${d} мл из ${fmt(t)} мл`},reads:[{k:'Красный',v:d+' мл'},{k:'Всего сейчас',v:fmt(t)+' мл'},{k:'Красный от целого',v:fmt(d/t*100)+'%',hot:true},{k:'Нужно',v:p+'%'}]}},
@@ -405,12 +441,12 @@ function g7(level){
     kind:'input',input:{unit:'%',label:'Твой ответ'},answer:P.t,
     view(){const m=mixFlasks(P,P.b,P.a+P.b);return{flasks:m.flasks,reads:[{k:'Соль из A',v:fmt(sA)+' г'},{k:'Соль из B',v:fmt(P.b*P.c2/100)+' г'},{k:'Раствора всего',v:(P.a+P.b)+' г'}]}},
     wrong:v=>Math.abs(v-(P.c1+P.c2)/2)<0.01?`Это среднее арифметическое, но растворов взято разное количество. Считай массу соли и дели на массу всей смеси.`:`Получилось ${fmt(v)}%, а в колбе на самом деле ${P.t}%: соли ${fmt(sA+P.b*P.c2/100)} г на ${P.a+P.b} г смеси.`,
-    hint:'Проценты складывать нельзя. Сложи массы соли и массы растворов.',
+    hint:'Проценты разных растворов складывать нельзя. Сложи массы соли и массы растворов.',
     explain:`Соли: ${P.a}×${P.c1}% + ${P.b}×${P.c2}% = ${fmt(sA)} + ${fmt(P.b*P.c2/100)} = ${fmt(sA+P.b*P.c2/100)} г. Смеси: ${P.a}+${P.b} = ${P.a+P.b} г. c = ${fmt(sA+P.b*P.c2/100)} ÷ ${P.a+P.b} = <b>${P.t}%</b>.`,
     memo:'<b>c = (m₁c₁ + m₂c₂) ÷ (m₁ + m₂)</b>'};
   const mx=sliderMax(P.b,2.2);const cap=P.a+mx;
   return{text:`Есть <b>${P.a} г</b> ${P.c1}% раствора (колба A). Сколько граммов ${P.c2}% раствора из колбы B нужно добавить, чтобы получить <b>${P.t}%</b> раствор?`,
-    kind:'slider',slider:{min:0,max:mx,step:1,big:10,init:0,unit:'г',label:'Взять из колбы B'},answer:P.b,
+    kind:'slider',slider:{min:0,max:mx,step:1,big:10,init:0,unit:'г',label:'Взять из колбы B'},drag:{from:1,to:2,hint:'колбу B в колбу «Смесь» и держи'},answer:P.b,
     view(b){const m=mixFlasks(P,b,cap);return{flasks:m.flasks,chain:{n:sA+b*P.c2/100,d:P.a+b,part:`${fmt(sA+b*P.c2/100)} г соли из ${fmt(P.a+b)} г смеси`},reads:[{k:'Соль из A',v:fmt(sA)+' г'},{k:'Соль из B',v:fmt(b*P.c2/100)+' г'},{k:'Смеси',v:fmt(P.a+b)+' г'},{k:'Концентрация',v:fmt(m.c)+'%',hot:true},{k:'Нужно',v:P.t+'%'}]}},
     wrong:b=>`Сейчас в смеси ${fmt(mixFlasks(P,b,cap).c)}%, а нужно ${P.t}%.`,
     hint:'Пусть взяли b г. Соли будет a·c₁ + b·c₂, а смеси a + b. Их отношение должно равняться нужной концентрации.',
@@ -425,7 +461,7 @@ function g8(level){
   const w=M-s;
   if(!evap){const cap=T2*1.15;const mx=sliderMax(x,1.8);
     return{text:`Есть <b>${M} г</b> ${c}% раствора соли. Сколько граммов воды нужно долить, чтобы концентрация стала <b>${c2}%</b>?`,
-      kind:'slider',slider:{min:0,max:mx,step:1,big:10,init:0,unit:'г',label:'Долить воды, г'},answer:x,
+      kind:'slider',slider:{min:0,max:mx,step:1,big:10,init:0,unit:'г',label:'Долить воды, г'},drag:{tool:'jug',color:CYAN,label:'Вода',to:0,hint:'воду на колбу и держи'},answer:x,
       view(v){return{flasks:[{title:'Раствор',layers:[{f:s/cap,color:PINK},{f:w/cap,color:BLUE},{f:v/cap,color:CYAN}],ticks:massTicks(cap),marks:[{f:M/cap,t:'было'}],caption:`раствора <b>${fmt(M+v)} г</b>`}],
         chain:{n:s,d:M+v,part:`${s} г соли из ${fmt(M+v)} г раствора`},reads:[{k:'Соли (не меняется)',v:s+' г'},{k:'Раствора',v:fmt(M+v)+' г'},{k:'Концентрация',v:fmt(s/(M+v)*100)+'%',hot:true},{k:'Нужно',v:c2+'%'}]}},
       wrong:v=>`Сейчас ${fmt(s/(M+v)*100)}%, а нужно ${c2}%.`,
@@ -434,7 +470,7 @@ function g8(level){
       memo:'<b>масса раствора = m(соли) ÷ c × 100</b>'};}
   const cap=M*1.05;
   return{text:`Есть <b>${M} г</b> ${c}% раствора соли. Сколько граммов воды нужно выпарить, чтобы концентрация стала <b>${c2}%</b>?`,
-    kind:'slider',slider:{min:0,max:w,step:1,big:10,init:0,unit:'г',label:'Выпарить воды, г'},answer:x,
+    kind:'slider',slider:{min:0,max:w,step:1,big:10,init:0,unit:'г',label:'Выпарить воды, г'},drag:{tool:'steam',label:'Пар',to:0,hint:'пар к колбе и держи',puff:1},answer:x,
     view(v){return{flasks:[{title:'Раствор',layers:[{f:s/cap,color:PINK},{f:(w-v)/cap,color:BLUE}],ticks:massTicks(cap),marks:[{f:M/cap,t:'было'}],caption:`раствора <b>${fmt(M-v)} г</b>`}],
       chain:{n:s,d:M-v,part:`${s} г соли из ${fmt(M-v)} г раствора`},reads:[{k:'Соли (не меняется)',v:s+' г'},{k:'Раствора',v:fmt(M-v)+' г'},{k:'Концентрация',v:fmt(s/(M-v)*100)+'%',hot:true},{k:'Нужно',v:c2+'%'}]}},
     wrong:v=>`Сейчас ${fmt(s/(M-v)*100)}%, а нужно ${c2}%.`,
@@ -506,7 +542,7 @@ function rackTask(P,mode){
       const expr=o.map((i,k)=>{const t=P.tubes[i];return(t.h<0?' − ':k?' + ':'')+t.label.replace('−','')}).join('');
       return{flasks:[{title:'Большая колба',layers,ticks:tk(10,x=>pc?Math.round(x*100)+'%':fmt(x)),marks:[{f:T/100,t:'цель',cls:'goal'},{f:1,t:full}],
         caption:`в колбе <b>${show(signed)}</b>${signed>100?' — через край!':''}`}],
-        chain:{n:signed,d:100,part:`${fmt(signed)} из 100 частей колбы`},reads:[{k:'Что налито',v:expr||'—'},{k:'В колбе',v:show(signed)+(pc?'':' = '+fmt(signed)+'%'),hot:true},{k:'Нужно',v:tl}]}},
+        chain:{n:signed,d:100,part:`${fmt(signed)} из 100 частей колбы`},reads:[{k:'Что налито',v:expr||'—'},{k:'В колбе',v:show(signed)+(pc?'':' = '+fmt(signed)+'%'),hot:true}]}},
     wrong:o=>{const t=sum(o),d=T-t;return t>100?`Колба переполнена: в ней ${show(t)}, а весь объём — ${full}.`:t<0?`Отлито больше, чем налито: в колбе ${show(t)}.`:`В колбе ${show(t)}, а нужно ${tl}. ${d>0?'Не хватает':'Лишнее'}: ${show(Math.abs(d))}.`},
     hint:'Переведи всё в один вид: 1% = 0,01. Плюс доливает, минус отливает. Складывай числа по порядку.',
     explain:`Например: ${solExpr} = <b>${tl}</b>. ${mode==='mixed'?'Проценты и десятичные дроби можно смешивать только после перевода в один вид: 20% = 0,2.':''}`,
@@ -514,7 +550,7 @@ function rackTask(P,mode){
 }
 function gAdd(level){
   const c=level%5;
-  const P=mkRack('percent',[2,2,3,3,4][c],c>=1,[0,1,1,2,2][c]);
+  const P=mkRack('percent',[2,2,3,3,4][c],c>=1,[1,1,2,2,2][c]);
   return rackTask(P,'percent');
 }
 function gDec(level){
@@ -527,7 +563,7 @@ function gDec(level){
       view(v){const g=isNum(v)&&v>=0;return{flasks:[{title:'Колба',layers:[{f:p/100,color:BLUE}],ticks:tk(10,x=>fmt(x)),marks:[{f:1,t:'1'}].concat(g?[{f:Math.min(v,1.05),t:'ответ',cls:'ghost'}]:[]),caption:`налито ${p}%`}],
         chain:g?{n:Math.round(v*1e4)/100,d:100,part:`${fmt(v*100)} сотых`}:null,reads:[{k:'Проценты',v:p+'%'},{k:'Это сотых',v:p+'/100'},{k:'Твой ответ',v:g?fmt(v):'—',hot:true}]}},
       wrong:v=>Math.abs(v-p/10)<1e-9?`Запятая сдвигается на два знака, а не на один: ${p}% = ${p}/100, а не ${p}/10.`:Math.abs(v-p)<1e-9?`Так ты записал число процентов. Делим на 100: запятая идёт на два знака влево.`:`Ты ответил ${fmt(v)}, а колба налита на ${p}%. Метка «ответ» должна встать на уровень жидкости.`,
-      hint:'1% = 1/100 = 0,01. Чтобы перевести проценты в десятичную дробь, разделите число на 100: сдвиньте запятую на два знака влево.',
+      hint:'1% = 1/100 = 0,01. Чтобы перевести проценты в десятичную дробь, раздели число на 100: сдвинь запятую на два знака влево.',
       explain:`${p}% = ${p}/100 = <b>${fmt(d)}</b>.${p<10?' Недостающие разряды заполняем нулём: 0,0'+p+'.':''}`,memo:'<b>p% = p ÷ 100</b>, запятая влево на 2 знака'}}
   const d=pick([.6,.05,.4,.85,.07,.9,.15,.03,.25,.5]);const p=Math.round(d*100);
   return{text:`Запиши <b>${fmt(d)}</b> в процентах.`,kind:'input',input:{unit:'%',label:'Твой ответ'},answer:p,
@@ -535,7 +571,7 @@ function gDec(level){
       chain:g?{n:v,d:100,part:`${fmt(v)} из 100`}:null,reads:[{k:'Десятичная дробь',v:fmt(d)},{k:'Это сотых',v:p+'/100'},{k:'Твой ответ',v:g?fmt(v)+'%':'—',hot:true}]}},
     wrong:v=>Math.abs(v-d*10)<1e-9?`Запятая сдвигается на два знака вправо: ${fmt(d)} = ${p}/100, а не ${p/10}/10.`:`Ты ответил ${fmt(v)}%, а колба налита на ${p}%.`,
     hint:'Чтобы перевести десятичную дробь в проценты, умножь на 100: запятая идёт на два знака вправо.',
-    explain:`${fmt(d)} = ${p}/100 = <b>${p}%</b>.`,memo:'<b>d = d × 100%</b>, запятая вправо на 2 знака'};
+    explain:`${fmt(d)} = ${p}/100 = <b>${p}%</b>.`,memo:'<b>p% = d × 100%</b>, запятая вправо на 2 знака'};
 }
 
 
@@ -677,7 +713,7 @@ const SECS=[
   demo:demoFlask([{f:.1,color:PINK},{f:.9,color:BLUE}],tk(10,x=>fmt(200*x)),[{f:1,t:'100%'}],'соль 20 г, вода 180 г: 10%','200 г'),
   demoCap:'Розовый слой — соль. Он занимает 10% раствора.'}},
 {id:'s7',n:7,name:'Смешивание растворов',grade:'9 класс, ОГЭ',c:'#ff3db4',gen:g7,short:'Складываем массу соли и массу растворов, а не проценты.',group:2,
- th:{idea:'При смешивании складываются массы растворов и массы вещества в них. Проценты складывать нельзя. Поэтому сначала считаем, сколько соли в каждой колбе.',
+ th:{idea:'При смешивании складываются массы растворов и массы вещества в них. Проценты разных растворов складывать нельзя: у каждого своя база. Поэтому сначала считаем, сколько соли в каждой колбе.',
   formula:['c = (m₁·c₁ + m₂·c₂) ÷ (m₁ + m₂)','соль₁ + соль₂ = соль смеси'],
   ex:{task:'Смешали 200 г 10% раствора и 100 г 40% раствора. Какая концентрация?',steps:['Соли в первом: 200 × 0,10 = 20 г.','Соли во втором: 100 × 0,40 = 40 г.','Соли всего 60 г, смеси 300 г: 60 ÷ 300 = 20%.']},
   key:'Считаем по соли: 60 г на 300 г смеси, это 60 ÷ 300 = 20%. Среднее арифметическое подходит только тогда, когда массы растворов равны.',
@@ -710,20 +746,20 @@ const SR={id:'sr',name:'Сложение и вычитание проценто�
  th:{idea:'Проценты одного и того же целого складывают и вычитают как обычные числа. Условие одно: все они считаются от одной базы, то есть от целой колбы (100%).',
   formula:['20% + 35% = 55%','55% − 15% = 40%','свободно = 100% − налито'],
   ex:{task:'В большую колбу влили пробирки 20%, 35% и 10%, потом отлили 15%. Сколько процентов в колбе?',steps:['Наливаем: 20% + 35% + 10% = 65%.','Отливаем: 65% − 15% = 50%.','В колбе половина объёма. Свободно ещё 100% − 50% = 50%.']},
-  key:'20% + 35% = 55% — это налито. Свободно 100% − 55% = 45%.',
+  key:'20% + 35% = 55% — это налито. Свободно: 100% − 55% = 45%.',
   demo:demoFlask([{f:.2,color:PINK},{f:.35,color:CYAN},{f:.1,color:LIME}],tk(10,x=>Math.round(x*100)+'%'),[{f:1,t:'100%'}],'20% + 35% + 10% = 65%','Большая колба'),
   demoCap:'Три пробирки слились в один слой высотой 65%.'}};
 SECS.splice(1,0,SD);SECS.splice(5,0,SR);SECS.forEach((s,i)=>s.n=i+1);
 const GROUPS=[['5–6 классы','Что такое процент и три основные задачи'],['6–8 классы','Изменение величины на несколько процентов'],['9 класс · ОГЭ','Растворы, смеси и сложные проценты']];
-const GOAL=5;
+const STEP=5,GOAL=15;
 
 /* ===== storage + progression ===== */
 const EXAM={s1:gx1,sd:gxd,s2:gx2,s3:gx3,s4:gx4,sr:gxr,s5:gx5,s6:gx6,s7:gx7,s8:gx8,s9:gx9};SECS.forEach(s=>s.exam=EXAM[s.id]);
-const RUNGS=[1,1,2,2,3],RUNG_NAME=['С подсказками','Без подсказок','Формат ОГЭ'];
+const RUNG_NAME=['С подсказками','Меньше подсказок','Формат ОГЭ'],RUNG_HELP=['Подсказки на экране. Реши пять задач — откроется следующая ступень.','Подсказок меньше, ты решаешь сам. Ещё пять задач — и откроются задачи как в ОГЭ.','Задачи в формате ФИПИ, без подсказок. Реши пять — и раздел пройден.'];
 let mem={};const KEY='pct-lab-v2';
 try{mem=JSON.parse(localStorage.getItem(KEY)||'{}')||{}}catch(e){mem={}}
 const gs=id=>{const g=mem[id]||(mem[id]={});g.streak=g.streak||0;g.n=g.n||0;g.closed=!!g.closed;return g};
-const rungOf=g=>g.closed?3:RUNGS[Math.min(g.streak,4)];
+const rungOf=g=>g.closed?3:Math.min(2,Math.floor(g.streak/STEP))+1;
 const saveProg=()=>{try{localStorage.setItem(KEY,JSON.stringify(mem))}catch(e){}};
 const gcd=(a,b)=>b?gcd(b,a%b):Math.abs(a);
 
@@ -775,7 +811,7 @@ function burst(x,y,kind){
 function loop(now){
   const dt=Math.min((now-lastT)/1000,.05);lastT=now;cx.clearRect(0,0,innerWidth,innerHeight);
   parts=parts.filter(p=>p.t<p.m&&p.y<innerHeight+40);
-  for(const p of parts){p.t+=dt;p.vy+=(p.foam?700:520)*dt;p.vx*=.992;p.x+=p.vx*dt;p.y+=p.vy*dt;
+  for(const p of parts){p.t+=dt;p.vy+=(p.up?-30:p.foam?700:520)*dt;p.vx*=.992;p.x+=p.vx*dt;p.y+=p.vy*dt;
     const a=Math.max(0,1-(p.t/p.m)**2);cx.globalAlpha=a;cx.fillStyle=p.col;cx.beginPath();cx.arc(p.x,p.y,p.r,0,7);cx.fill();
     if(p.foam){cx.strokeStyle='rgba(255,255,255,.9)';cx.lineWidth=1.5;cx.stroke()}}
   cx.globalAlpha=1;raf=parts.length?requestAnimationFrame(loop):0;
@@ -790,22 +826,67 @@ function modal({kind,title,html,buttons}){
 }
 const closeModal=()=>{document.getElementById('modal-host').innerHTML=''};
 
+
+/* ===== drag ===== */
+const hitEl=(el,x,y,pad=26)=>{const r=el.getBoundingClientRect();return x>=r.left-pad&&x<=r.right+pad&&y>=r.top-pad&&y<=r.bottom+pad};
+const TOOLS={
+ bottle:col=>`<svg viewBox="0 0 80 110" aria-hidden="true"><path d="M16 66h48v34a8 8 0 0 1-8 8H24a8 8 0 0 1-8-8z" fill="${col}"/><path class="tg" d="M31 6h18v18l15 22v54a8 8 0 0 1-8 8H24a8 8 0 0 1-8-8V46l15-22z"/></svg>`,
+ jug:col=>`<svg viewBox="0 0 90 110" aria-hidden="true"><path d="M20 58h44l-3 40a8 8 0 0 1-8 8H31a8 8 0 0 1-8-8z" fill="${col}"/><path class="tg" d="M18 28h48l-3 70a8 8 0 0 1-8 8H29a8 8 0 0 1-8-8z"/><path class="tg" d="M66 40c18 0 18 30 0 30" fill="none"/><path class="tg" d="M18 28l-8-6"/></svg>`,
+ steam:()=>`<svg viewBox="0 0 80 110" aria-hidden="true"><path class="tg" d="M40 96C14 78 24 56 40 24c16 32 26 54 0 72z" stroke-dasharray="5 5"/><path class="wisp" d="M31 86q-8-9 0-18t0-18"/><path class="wisp w2" d="M49 82q8-9 0-18t0-18"/><path class="wisp w3" d="M40 66q-7-8 0-16t0-16"/><rect x="24" y="98" width="32" height="8" rx="3" fill="#8a7fb8"/></svg>`
+};
+function flyBack(g,el){const r=el.getBoundingClientRect();g.style.transition='transform .28s ease,opacity .28s';g.style.transform=`translate(${r.left}px,${r.top}px) rotate(0deg)`;g.style.opacity='.2';setTimeout(()=>g.remove(),300)}
+function puff(x,y){if(reduce)return;parts.push({x:x+(Math.random()-.5)*40,y,vx:(Math.random()-.5)*30,vy:-60-Math.random()*50,r:6+Math.random()*9,t:0,m:1.1+Math.random()*.6,col:'rgba(225,245,255,.75)',up:1});if(!raf){lastT=performance.now();raf=requestAnimationFrame(loop)}}
+function enableDrag(el,o){
+  el.classList.add('dragsrc');if(!o.long)el.style.touchAction='none';
+  el.addEventListener('click',e=>{if(el._dr){el._dr=false;e.stopImmediatePropagation();e.preventDefault()}},true);
+  el.addEventListener('pointerdown',e=>{
+    if((e.pointerType==='mouse'&&e.button!==0)||!o.ok())return;
+    const sx=e.clientX,sy=e.clientY,touch=e.pointerType==='touch';
+    let on=false,ready=!(o.long&&touch),g=null,ox=0,oy=0,over=false,px=sx,py=sy,raf2=0,last=0,stream=null,tm=0;
+    el._dr=false;
+    const place=()=>{g.style.transform=`translate(${px-ox}px,${py-oy}px) rotate(${over?-60:0}deg)`;
+      if(stream){const t=o.target().getBoundingClientRect();stream.style.left=(px-2)+'px';stream.style.top=py+'px';stream.style.height=Math.max(0,t.top+t.height*.55-py)+'px'}};
+    const tick=now=>{const dt=Math.min((now-last)/1000,.05);last=now;if(over&&o.hold)o.hold(dt,px,py);raf2=requestAnimationFrame(tick)};
+    const tmv=ev=>{if(on)ev.preventDefault()};
+    const cleanup=()=>{clearTimeout(tm);removeEventListener('pointermove',move);removeEventListener('pointerup',end);removeEventListener('pointercancel',end);removeEventListener('touchmove',tmv)};
+    const move=ev=>{px=ev.clientX;py=ev.clientY;
+      if(!on){if(Math.hypot(px-sx,py-sy)<8){return}
+        if(!ready){cleanup();return}
+        on=true;el._dr=true;const r=el.getBoundingClientRect();ox=sx-r.left;oy=sy-r.top;
+        g=(o.ghostOf?o.ghostOf():el).cloneNode(true);g.classList.add('ghost');g.style.width=r.width+'px';g.style.transformOrigin=ox+'px '+oy+'px';document.body.appendChild(g);
+        el.classList.add('lifted');document.body.classList.add('dragging');last=performance.now();raf2=requestAnimationFrame(tick);o.start&&o.start()}
+      const was=over;over=hitEl(o.target(),px,py);
+      if(over!==was){g.classList.toggle('pouring',over);o.target().classList.toggle('drop',over);
+        if(over&&o.stream){stream=document.createElement('div');stream.className='stream';stream.style.background=typeof o.stream==='function'?o.stream():o.stream;document.body.appendChild(stream)}
+        else if(stream){stream.remove();stream=null}
+        o.over&&o.over(over)}
+      place()};
+    const end=()=>{const wasOn=on;cleanup();if(!wasOn)return;cancelAnimationFrame(raf2);document.body.classList.remove('dragging');el.classList.remove('lifted');o.target().classList.remove('drop');
+      const ctx={g,over,stream,fly:()=>{stream&&stream.remove();flyBack(g,el)},done:()=>{stream&&stream.remove();g.remove()}};
+      o.end?o.end(ctx):ctx.fly()};
+    addEventListener('pointermove',move);addEventListener('pointerup',end);addEventListener('pointercancel',end);addEventListener('touchmove',tmv,{passive:false});
+    if(!ready)tm=setTimeout(()=>{ready=true;move({clientX:px,clientY:py})},200);
+  });
+}
+
 /* ===== lab ===== */
 const parse=s=>{const t=String(s).trim().replace(/−/g,'-').replace(',','.').replace('%','');return t===''||isNaN(+t)?NaN:+t};
 function chainHTML(c){
   const dec=c.n/c.d;let fr='—';
   if(Number.isInteger(c.n)&&Number.isInteger(c.d)){const g=gcd(c.n,c.d)||1;fr=c.n===0?'0':`${c.n/g}/${c.d/g}`}
   const tile=(k,v)=>`<div class="cn"><span class="k">${k}</span><span class="v">${F(v)}</span></div>`;
-  return `<div class="chain-cap">Одно и то же количество жидкости в четырёх записях</div>`+tile('Часть',c.part)+'<span class="eq">=</span>'+tile('Дробь',fr)+'<span class="eq">=</span>'+tile('Десятичная',fmt(dec))+'<span class="eq">=</span>'+tile('Проценты',fmt(dec*100)+'%');
+  return `<div class="chain-cap">Одно и то же количество жидкости в четырёх записях</div>`+tile('Часть от целого',c.part)+'<span class="eq">=</span>'+tile('Дробь',fr)+'<span class="eq">=</span>'+tile('Десятичная',fmt(dec))+'<span class="eq">=</span>'+tile('Проценты',fmt(dec*100)+'%');
 }
+function chainEmpty(){const t=(k)=>`<div class="cn"><span class="k">${k}</span><span class="v">?</span></div>`;
+  return `<div class="chain-cap">Одно и то же количество жидкости в четырёх записях</div>`+t('Часть от целого')+'<span class="eq">=</span>'+t('Дробь')+'<span class="eq">=</span>'+t('Десятичная')+'<span class="eq">=</span>'+t('Проценты')+`<div class="chain-wait">Впиши ответ, и все четыре записи заполнятся.</div>`}
 function renderLab(sec,host){
-  let task,flasks=[],value,attempts=0,locked=false,rung=1;
-  host.innerHTML=`<div class="lab"><section class="task" aria-label="Задача"><div class="task-meta"><span class="badge">Задача</span><span class="eyebrow">Верных подряд: <b class="num"></b> из ${GOAL}</span><div class="dots" aria-label="Прогресс"></div></div>
+  let task,flasks=[],value,attempts=0,locked=false,rung=1,sliderSet=null,busy=false;
+  host.innerHTML=`<div class="lab"><section class="task" aria-label="Задача"><div class="task-meta"><span class="badge">Задача</span><span class="eyebrow">На этой ступени: <b class="num"></b> из ${STEP}</span><div class="dots" aria-label="Прогресс"></div></div>
   <div class="rungs" aria-label="Ступени"></div><p class="task-text"></p><p class="task-go"></p></section>
-  <div class="stage"></div><div class="card chain" hidden></div><div class="card panel"><div class="ctl"></div><div class="reads"></div><div class="run-row"><button class="btn primary run">Запустить реакцию</button><span class="memo"></span></div></div></div>`;
+  <div class="stage"></div><div class="card panel"><div class="ctl"></div><div class="reads"></div><div class="run-row"><button class="btn primary run">Запустить реакцию</button></div></div><div class="card chain" hidden><div class="chain-row"></div><p class="memo"></p></div></div>`;
   const $q=s=>host.querySelector(s);
-  function dots(){const g=gs(sec.id);$q('.dots').innerHTML=Array.from({length:GOAL},(_,i)=>`<i class="${i<g.streak?'on':''}"></i>`).join('');$q('.num').textContent=g.streak;
-    $q('.rungs').innerHTML=RUNG_NAME.map((n,i)=>`<span class="rg${i+1===rung?' on':''}">${i+1} · ${n}</span>`).join('')}
+  function dots(){const g=gs(sec.id);const inStep=g.closed?STEP:g.streak-STEP*(rungOf(g)-1);$q('.dots').innerHTML=Array.from({length:STEP},(_,i)=>`<i class="${i<inStep?'on':''}"></i>`).join('');$q('.num').textContent=inStep;
+    $q('.rungs').innerHTML=`<div class="lvl-bars">${RUNG_NAME.map((n,i)=>`<i class="${i+1<=rung?'on':''}"></i>`).join('')}</div><div class="lvl-txt"><b>Ступень ${rung} из 3 · ${RUNG_NAME[rung-1]}.</b> ${RUNG_HELP[rung-1]}<span class="lvl-why">Сейчас ты решишь пять задач с подсказками, потом попробуешь справляться сам ещё с пятью, а финальные пять будут в формате ОГЭ. Перепрыгнуть нельзя: каждая ступень готовит к следующей. Ошибся — не страшно, вернёмся на шаг назад, где проще.</span></div>`}
   const arg=()=>task.kind==='slider'||task.kind==='rack'?value:(isNum(value)?value:null);
   function update(){
     if(task.exam){$q('.reads').innerHTML='';$q('.reads').hidden=true;$q('.chain').hidden=true;return}
@@ -813,17 +894,17 @@ function renderLab(sec,host){
     if(rung>=2){const live=task.kind!=='input';
       d={flasks:d.flasks.map(f=>({...f,caption:live?'':f.caption,marks:(f.marks||[]).filter(m=>m.cls!=='ghost')})),reads:live?d.reads.filter(r=>r.k==='Нужно'):d.reads,chain:null}}
     flasks.forEach((f,i)=>f.set(d.flasks[i]));
-    const ch=$q('.chain');if(d.chain&&isNum(d.chain.n)&&d.chain.d>0){ch.hidden=false;ch.innerHTML=chainHTML(d.chain)}else ch.hidden=true;
+    const ch=$q('.chain'),cr=$q('.chain-row'),has=d.chain&&isNum(d.chain.n)&&d.chain.d>0,empty=!has&&task.kind==='input'&&rung===1;cr.hidden=!has&&!empty;cr.innerHTML=has?chainHTML(d.chain):empty?chainEmpty():'';ch.hidden=!has&&!empty&&!$q('.memo').innerHTML;
     $q('.reads').innerHTML=d.reads.map(r=>`<div class="read${r.hot?' hot':''}"><div class="k">${F(r.k)}</div><div class="v">${F(r.v)}</div></div>`).join('');$q('.reads').hidden=!d.reads.length}
   function build(){
-    const g=gs(sec.id);rung=rungOf(g);attempts=0;locked=false;
+    const g=gs(sec.id);rung=rungOf(g);attempts=0;locked=false;busy=false;sliderSet=null;
     let src=sec,review=null;const idx=SECS.indexOf(sec);
     if(rung>=2&&!g.closed&&idx>0&&g.n>=2&&Math.random()<.3){src=pick(SECS.slice(0,idx));review=src.name}
     task=rung===3?src.exam(g.n):src.gen(g.n);g.n++;saveProg();
     const tk_=$q('.task');tk_.classList.remove('ok','boom');
     $q('.badge').textContent=rung===3?'Задача · ОГЭ':'Задача';
-    $q('.task-go').textContent=review?'Повторение: '+review:task.exam?'Запиши ответ числом, как в бланке ОГЭ ↓':'Реши её на колбе ниже ↓';
-    $q('.task-text').innerHTML=F(task.text);$q('.memo').innerHTML=task.exam?'':F('Памятка: '+task.memo);dots();
+    const GO=task.exam?'Запиши ответ числом, как в бланке ОГЭ ↓':task.kind==='slider'?(task.drag?'Двигай ползунок под колбой или перетащи '+task.drag.hint+' ↓':'Двигай ползунок под колбой ↓'):task.kind==='rack'?'Нажимай на пробирки ниже или перетаскивай их в большую колбу ↓':'Впиши ответ в поле под колбой ↓';$q('.task-go').textContent=review?'Повторение: '+review+'. '+GO:GO;
+    $q('.task-text').innerHTML=F(task.text);$q('.memo').innerHTML=task.exam?'':F('<b>Памятка:</b> '+task.memo);dots();
     $q('.stage').hidden=!!task.exam;
     value=task.kind==='slider'?task.slider.init:task.kind==='rack'?[]:NaN;
     const st=$q('.stage');st.innerHTML='';flasks=[];
@@ -833,17 +914,32 @@ function renderLab(sec,host){
       ctl.innerHTML=`<div class="rng-wrap"><label class="ctl-label" for="rng">${s.label}</label><input id="rng" type="range" min="${s.min}" max="${s.max}" step="${s.step}" value="${s.init}">
       <div class="rng-btns"><button class="btn step" data-d="${-s.big}">−${s.big}</button><button class="btn step" data-d="${-s.step}">−${s.step}</button><button class="btn step" data-d="${s.step}">+${s.step}</button><button class="btn step" data-d="${s.big}">+${s.big}</button><span class="rv"><span id="rvv"></span> ${s.unit}</span></div></div>`;
       const r=ctl.querySelector('#rng'),rv=ctl.querySelector('#rvv');
-      const set=v=>{v=Math.min(s.max,Math.max(s.min,v));value=v;r.value=v;rv.textContent=fmt(v);update()};
+      const set=v=>{v=Math.min(s.max,Math.max(s.min,v));value=v;r.value=v;rv.textContent=fmt(v);update()};sliderSet=set;
       r.oninput=()=>set(+r.value);ctl.querySelectorAll('.step').forEach(b=>b.onclick=()=>{if(!locked)set(value+ +b.dataset.d)});rv.textContent=fmt(value);
     }else if(task.kind==='rack'){
       ctl.innerHTML=`<div class="rack" role="group" aria-label="Штатив с пробирками">${task.tubes.map((t,i)=>{const lv=Math.min(Math.abs(t.h)/60,1)*150,uidT='tb'+(++uid);
         return`<button class="tube${t.h<0?' neg':''}" data-i="${i}" aria-pressed="false" aria-label="Пробирка ${t.label}"><svg viewBox="0 0 60 180" aria-hidden="true"><defs><clipPath id="${uidT}"><path d="M12 8 H48 V150 Q48 172 30 172 Q12 172 12 150 Z"/></clipPath></defs><g clip-path="url(#${uidT})"><rect class="liq" x="10" y="${172-lv}" width="40" height="${lv}" fill="${t.color}" opacity="${t.h<0?.75:1}"/></g><path class="tglass" d="M12 8 H48 V150 Q48 172 30 172 Q12 172 12 150 Z"/></svg><span class="tl">${t.label}</span><span class="tn">${t.h<0?'отлить':'налить'}</span></button>`}).join('')}</div>
-      <div class="run-row"><span class="memo">Нажми на пробирку, чтобы использовать её. Нажми ещё раз, чтобы вернуть.</span><button class="btn ghost rk-reset">Сбросить</button></div>`;
+      <div class="run-row"><span class="memo">Перетащи пробирку в большую колбу или просто нажми на неё. Чтобы вернуть, нажми на пустую пробирку.</span><button class="btn ghost rk-reset">Сбросить</button></div>`;
       ctl.querySelectorAll('.tube').forEach(b=>b.onclick=()=>{if(locked)return;const i=+b.dataset.i;const k=value.indexOf(i);value=k>=0?value.filter(x=>x!==i):value.concat(i);update()});
       ctl.querySelector('.rk-reset').onclick=()=>{if(locked)return;value=[];update()};
+      ctl.querySelectorAll('.tube').forEach(b=>enableDrag(b,{ok:()=>!locked&&!busy,target:()=>flasks[0].root,stream:()=>task.tubes[+b.dataset.i].color,
+        end:ctx=>{const i=+b.dataset.i,used=value.includes(i);
+          if(!used&&ctx.over){busy=true;ctx.g.classList.add('emptying');setTimeout(()=>{ctx.done();busy=false;if(!locked){value=value.concat(i);update()}},600)}
+          else if(used&&!ctx.over){ctx.fly();value=value.filter(x=>x!==i);update()}
+          else ctx.fly()}}));
     }else{
       ctl.innerHTML=`<div class="rng-wrap"><label class="ctl-label" for="ans">${task.input.label}</label><div class="ans-row"><input id="ans" inputmode="decimal" autocomplete="off" placeholder="?"><span class="unit">${task.input.unit}</span></div></div>`;
       const a=ctl.querySelector('#ans');a.oninput=()=>{value=parse(a.value);update()};a.onkeydown=e=>{if(e.key==='Enter')run()};
+    }
+    if(task.kind==='slider'&&task.drag&&sliderSet){
+      const d=task.drag,s=task.slider;let acc=value,pt=0;
+      const common={ok:()=>!locked&&!busy,target:()=>flasks[d.to].root,start:()=>{acc=value},over:on=>{if(on)acc=value},
+        hold:dt=>{if(locked)return;acc=Math.min(s.max,Math.max(s.min,acc+(s.max-s.min)/3*dt));const v=Math.round(acc/s.step)*s.step;if(v!==value)sliderSet(v);
+          if(d.puff){pt+=dt;if(pt>.05){pt=0;const r=flasks[d.to].root.getBoundingClientRect();puff(r.left+r.width/2,r.top+r.height*.35)}}}};
+      if(d.tool){const w=document.createElement('div');w.className='tools';
+        w.innerHTML=`<div class="tool" role="img" aria-label="${d.label}">${TOOLS[d.tool](d.color)}<span class="tl">${d.label}</span><span class="th">тяни на колбу и держи</span></div>`;
+        $q('.stage').appendChild(w);enableDrag(w.firstChild,{...common,stream:d.tool==='steam'?null:d.color})}
+      else{const src=flasks[d.from].root;enableDrag(src,{...common,long:true,ghostOf:()=>src,stream:()=>{const L=task.view(value).flasks[d.from].layers;return(L[0]&&L[0].color)||'#fff'}})}
     }
     update();
   }
@@ -860,12 +956,12 @@ function renderLab(sec,host){
       if(!g.closed){g.streak=Math.min(GOAL,g.streak+1);if(g.streak>=GOAL){g.closed=true;just=true}}saveProg();
       const after=rungOf(g);dots();tcard.classList.add('ok');
       flasks.forEach(f=>f.success());burst(x,y,'spark');setTimeout(()=>burst(x-80,y-40,'spark'),200);setTimeout(()=>burst(x+80,y-40,'spark'),350);
-      const note=just?`<p>Пять верных подряд. Раздел пройден! Дальше можно тренировать задачи в формате ОГЭ.</p>`:after>before?`<p>Следующая задача: ступень ${after}, ${RUNG_NAME[after-1].toLowerCase()}.</p>`:'';
+      const note=just?`<p>Все три ступени пройдены. Раздел закрыт! Дальше можно тренировать задачи в формате ОГЭ.</p>`:after>before?`<p>Следующая задача: ступень ${after}, ${RUNG_NAME[after-1].replace(/^./,m=>m.toLowerCase())}.</p>`:'';
       setTimeout(()=>modal({kind:'ok',title:just?'Раздел пройден!':'Всё верно!',html:F(`<p>${task.exam?'Верно. Так это решение записывают в работе.':'Реакция прошла правильно: раствор поменял цвет.'}</p><div class="expl">${task.explain}</div>${note}`),
         buttons:[{label:'Следующая задача',cls:'primary',fn:build}].concat(just&&SECS[sec.n]?[{label:'К следующему разделу',cls:'ghost',fn:()=>go(SECS[sec.n].id,'theory')}]:[])}),900);
     }else{attempts++;let note='';
       if(attempts===1&&!g.closed&&g.streak>0){const before=rungOf(g);g.streak=Math.max(0,g.streak-2);saveProg();const after=rungOf(g);dots();
-        note=after<before?`<div class="expl">Вернём подсказки: следующая задача — ступень ${after}, ${RUNG_NAME[after-1].toLowerCase()}.</div>`:''}
+        note=after<before?`<div class="expl">Вернёмся на шаг назад: следующая задача — ступень ${after}, ${RUNG_NAME[after-1].replace(/^./,m=>m.toLowerCase())}.</div>`:''}
       flasks.forEach(f=>f.boom());tcard.classList.add('boom');flashAt(x,y);burst(x,y,'foam');setTimeout(()=>burst(x-70,y+20,'foam'),140);
       setTimeout(()=>modal({kind:'bad',title:'Бум! Пена повсюду',html:F(`<p>${task.wrong(value)}</p><div class="expl"><b>Как правильно.</b> ${task.hint}</div>${attempts>=2?`<div class="expl"><b>Разбор.</b> ${task.explain}</div>`:''}${note}`),
         buttons:[{label:'Попробовать снова',cls:'primary',fn:()=>{locked=false;tcard.classList.remove('boom');flasks.forEach(f=>f.reset());if(task.kind==='slider'){const r=$q('#rng');value=task.slider.init;r.value=value;$q('#rvv').textContent=fmt(value)}else if(task.kind==='rack')value=[];update()}}]}),750)}
@@ -887,14 +983,14 @@ function go(id,tab){cur=id;if(tab)tabs[id]=tab;closeModal();try{history.replaceS
 function render(){clearInterval(heroTimer);renderNav();const s=SECS.find(x=>x.id===cur);s?renderSection(s):renderMap()}
 function renderMap(){
   view.style.setProperty('--c','#ff3db4');
-  view.innerHTML=`<section class="hero"><div><h2>Проценты в колбах</h2><p class="lead">Одиннадцать разделов от «что такое 1%» и десятичных дробей до смесей и сложных процентов, как их проходят в школе с 5 по 9 класс. В каждом разделе сначала теория, потом опыты: двигай ползунок, смотри, как меняются проценты, и запускай реакцию. Верный ответ окрасит раствор, ошибка вызовет взрыв пены. Подсказки постепенно убираются, а последняя ступень — задача в формате ОГЭ.</p>
-  <p class="rule"><b>Главный вопрос любой задачи на проценты:</b> что здесь принимается за 100%? Учителя называют это выбором базы. Почти все ошибки начинаются с неверной базы.</p></div><div class="hero-demo" id="hd"></div></section>`+
-  GROUPS.map((g,gi)=>`<section class="group"><h3>${g[0]}<small>${g[1]}</small></h3><div class="rm-grid">${SECS.filter(s=>s.group===gi).map(s=>`<a class="rm${gs(s.id).closed?' done':''}" href="#${s.id}" data-id="${s.id}" style="--c:${s.c}"><span class="n">${String(s.n).padStart(2,'0')} · ${s.grade}</span><span class="nm">${s.name}</span><span class="sh">${s.short}</span><span class="pr">${gs(s.id).closed?'пройден ✓':'верных подряд: '+gs(s.id).streak+' из '+GOAL}</span></a>`).join('')}</div></section>`).join('')+
-  `<div class="how"><div><b>Теория</b>Идея, формула, разбор на числах и главное правило, которое нужно запомнить.</div><div><b>Ступени</b>Пять верных задач подряд закрывают раздел. Сначала с подсказками, потом без них, в конце — как в ОГЭ.</div><div><b>Реакция</b>Верно: жидкость становится зелёной. Неверно: взрыв, пена и подсказка.</div></div>
-  <p class="src">Порядок тем и типичные ошибки собраны по методическим разработкам: <a href="https://pedsovet.org/article/reshenie-zadach-na-protsenty" target="_blank" rel="noopener">Педсовет</a> и <a href="https://nsportal.ru/shkola/algebra/library/2016/05/24/reshenie-zadach-na-protsenty-v-kurse-5-6-klassov" target="_blank" rel="noopener">Образовательная социальная сеть</a>.</p>`;
+  view.innerHTML=`<section class="hero"><div><h2>Проценты в колбах</h2><p class="lead">Одиннадцать разделов про дроби, смеси и проценты, как их проходят в школе с 5 по 9 класс. В каждом разделе сначала теория, потом опыты: двигай ползунок, смотри, как меняются проценты, и запускай реакцию. Верный ответ окрасит раствор, ошибка вызовет взрыв пены.</p>
+  <p class="rule"><b>Главный вопрос любой задачи на проценты:</b> что здесь принимается за 100%? Самое важное всегда — правильно понять задачу.</p></div><div class="hero-demo" id="hd"></div></section>`+
+  `<section class="how"><h3>Как здесь заниматься</h3><p class="how-lead">В каждом разделе три части. Иди по порядку, так проще всего. Алгоритм такой: теория, потом задача на колбе, потом реакция, и так до тех пор, пока не пройдёшь все три ступени.</p>
+  <div class="how-grid"><div><i>1</i><b>Теория</b>Сначала прочитай теорию: идея, формула, разбор на числах и главное правило, которое нужно запомнить.</div><div><i>2</i><b>Ступени с задачами</b>Потом открой вкладку «Опыты». Там три ступени по пять задач: с подсказками, потом сам, в конце — как в ОГЭ. Следующая ступень открывается, когда решишь пять задач на этой. Пройдёшь все три — раздел закрыт.</div><div><i>3</i><b>Реакция</b>Задачу решаешь на колбе: двигаешь ползунок, наливаешь, отливаешь или вписываешь ответ — и запускаешь реакцию. Верно: раствор станет зелёным. Неверно: взрыв, пена и подсказка, как правильно.</div></div></section>
+  <section class="group"><h3>Одиннадцать разделов<small>Номер раздела и класс, в котором тема проходится в школе</small></h3><div class="rm-grid">${SECS.map(s=>`<a class="rm${gs(s.id).closed?' done':''}" href="#${s.id}" data-id="${s.id}" style="--c:${s.c}"><span class="n">Раздел ${s.n} · ${s.grade}</span><span class="nm">${s.name}</span><span class="sh">${s.short}</span><span class="pr">${gs(s.id).closed?'пройден ✓':'верных подряд: '+gs(s.id).streak+' из '+GOAL}</span></a>`).join('')}</div></section>`;
   view.querySelectorAll('a.rm').forEach(a=>a.onclick=e=>{e.preventDefault();go(a.dataset.id)});
   const f=makeFlask();const hd=document.getElementById('hd');hd.appendChild(f.root);f.root.style.maxWidth='280px';
-  hd.insertAdjacentHTML('beforeend','<p class="demo-hint"><span class="hm">Наведи курсор на колбу и води вверх-вниз: уровень и проценты меняются.</span><span class="ht">Коснись колбы: уровень и проценты изменятся.</span></p>');
+  if(matchMedia('(hover:hover) and (pointer:fine)').matches)hd.insertAdjacentHTML('beforeend','<p class="demo-hint">Наведи курсор на колбу и води вверх-вниз: уровень и проценты меняются.</p>');
   const svg=f.root.querySelector('svg');let cur_p=25,hov=false,i=0;const vals=[25,60,90,35,75];
   const show=p=>{cur_p=p;f.set({title:'Пример',layers:[{f:p/100,color:concColor(p*.6)}],ticks:tk(10,x=>Math.round(x*100)+'%'),
     marks:[{f:1,t:'100%'}].concat(hov?[{f:p/100,t:p+'%',cls:'ghost'}]:[]),caption:`налито <b>${p}%</b> = ${fmt(p/100)}`})};
